@@ -1,4 +1,4 @@
-package ru.dekabrsky.consecutivepractice2025.listWithDetails.presentation.viewModel
+package com.example.androidpractice.viewModel
 
 import androidx.lifecycle.ViewModel
 import androidx.navigation.NavHostController

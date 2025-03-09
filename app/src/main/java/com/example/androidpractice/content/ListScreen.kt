@@ -20,7 +20,7 @@ import com.example.androidpractice.domain.model.Movie
 import com.example.androidpractice.ui.theme.Typography
 import org.koin.androidx.compose.koinViewModel
 import org.koin.core.parameter.parametersOf
-import ru.dekabrsky.consecutivepractice2025.listWithDetails.presentation.viewModel.ListViewModel
+import com.example.androidpractice.viewModel.ListViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

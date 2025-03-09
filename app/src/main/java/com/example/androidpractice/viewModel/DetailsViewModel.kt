@@ -1,4 +1,4 @@
-package ru.dekabrsky.consecutivepractice2025.listWithDetails.presentation.viewModel
+package com.example.androidpractice.viewModel
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf

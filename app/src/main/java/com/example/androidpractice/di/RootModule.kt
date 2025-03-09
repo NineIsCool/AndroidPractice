@@ -1,11 +1,11 @@
-package ru.dekabrsky.consecutivepractice2025.di
+package com.example.androidpractice.di
 
 import com.example.androidpractice.domain.repository.IMoviesRepository
 import com.example.androidpractice.domain.repository.MoviesRepository
 import org.koin.core.module.dsl.viewModel
 import org.koin.dsl.module
-import ru.dekabrsky.consecutivepractice2025.listWithDetails.presentation.viewModel.DetailsViewModel
-import ru.dekabrsky.consecutivepractice2025.listWithDetails.presentation.viewModel.ListViewModel
+import com.example.androidpractice.viewModel.DetailsViewModel
+import com.example.androidpractice.viewModel.ListViewModel
 
 val rootModule = module {
     single<IMoviesRepository> { MoviesRepository() }

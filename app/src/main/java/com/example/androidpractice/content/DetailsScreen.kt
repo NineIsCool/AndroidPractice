@@ -39,7 +39,7 @@ import com.example.androidpractice.ui.theme.Spacing
 import com.example.androidpractice.ui.theme.Typography
 import org.koin.androidx.compose.koinViewModel
 import org.koin.core.parameter.parametersOf
-import ru.dekabrsky.consecutivepractice2025.listWithDetails.presentation.viewModel.DetailsViewModel
+import com.example.androidpractice.viewModel.DetailsViewModel
 
 @Composable
 fun DetailsScreen(navigation: NavHostController, movieId: Int) {
