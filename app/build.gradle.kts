@@ -43,7 +43,6 @@ dependencies {
     implementation(libs.retrofit)
     implementation(libs.converter.gson)
     implementation(libs.gson)
-    implementation("com.github.pozo:mapstruct-kotlin:1.3.1.1")
     debugImplementation("com.github.chuckerteam.chucker:library:4.1.0")
     releaseImplementation("com.github.chuckerteam.chucker:library-no-op:4.1.0")
     implementation(libs.material)
