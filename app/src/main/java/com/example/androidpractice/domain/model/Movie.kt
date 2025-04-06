@@ -1,25 +1,20 @@
 package com.example.androidpractice.domain.model
 
 class Movie(
-    val id: Int,
-    val name: String,
-    val rating: Rating,
-    val description: String,
-    val votes: Votes,
-    val premiere: Premiere,
-    val poster: Poster,
-    val genres: List<Genre>,
-    val countries: List<Country>,
-    val persons: List<Person>
+    val id: Int = 0,
+    val name: String = "",
+    val rating: Rating = Rating(0.0, 0.0, 0.0),
+    val description: String = "",
+    val votes: Votes = Votes(0, 0, 0),
+    val premiere: Premiere = Premiere(""),
+    val poster: Poster = Poster("", ""),
+    val genres: List<Genre> = listOf(),
+    val countries: List<Country> = listOf(),
+    val persons: List<Person> = listOf()
 ) {
 
     class Premiere(
         val world: String
-    )
-
-    class Poster(
-        val url: String,
-        val previewUrl: String
     )
 
     class Genre(
