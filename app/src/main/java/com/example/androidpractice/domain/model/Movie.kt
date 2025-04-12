@@ -1,6 +1,6 @@
 package com.example.androidpractice.domain.model
 
-class Movie(
+data class Movie(
     val id: Int,
     val name: String,
     val rating: Rating,
@@ -13,20 +13,18 @@ class Movie(
     val persons: List<Person>
 ) {
 
-    class Premiere(
+    @JvmInline
+    value class Premiere(
         val world: String
     )
 
-    class Poster(
-        val url: String,
-        val previewUrl: String
-    )
-
-    class Genre(
+    @JvmInline
+    value class Genre(
         val name: String
     )
 
-    class Country(
+    @JvmInline
+    value class Country(
         val name: String
     )
 }

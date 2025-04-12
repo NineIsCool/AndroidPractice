@@ -1,8 +1,7 @@
 package com.example.androidpractice.domain.model
 
-class Rating(
+data class Rating(
     val kp: Double,
     val imdb: Double,
     val filmCritics: Double,
-) {
-}
+)
