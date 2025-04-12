@@ -14,7 +14,9 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.rounded.ArrowBack
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -37,9 +39,9 @@ import com.example.androidpractice.domain.model.Movie
 import com.example.androidpractice.domain.model.Rating
 import com.example.androidpractice.ui.theme.Spacing
 import com.example.androidpractice.ui.theme.Typography
+import com.example.androidpractice.viewModel.DetailsViewModel
 import org.koin.androidx.compose.koinViewModel
 import org.koin.core.parameter.parametersOf
-import com.example.androidpractice.viewModel.DetailsViewModel
 
 @Composable
 fun DetailsScreen(navigation: NavHostController, movieId: Int) {
@@ -86,92 +88,97 @@ private fun MovieScreenContent(
             }
             return@Scaffold
         }
-        Column(
+        LazyColumn(
             modifier = Modifier
                 .padding(paddingValues)
                 .padding(16.dp)
         ) {
-            Row {
-                AsyncImage(
-                    model = movie.poster.url,
-                    contentDescription = null,
-                    modifier = Modifier
-                        .padding(horizontal = 8.dp)
-                        .height(300.dp)
-                        .width(200.dp)
-                        .clip(RoundedCornerShape(4.dp)),
-                    contentScale = ContentScale.Crop
-                )
+            item {
+                Row {
+                    AsyncImage(
+                        model = movie.poster.url,
+                        contentDescription = null,
+                        modifier = Modifier
+                            .padding(horizontal = 8.dp)
+                            .height(300.dp)
+                            .width(200.dp)
+                            .clip(RoundedCornerShape(4.dp)),
+                        contentScale = ContentScale.Crop
+                    )
+                    Column(
+                        modifier = Modifier
+                            .height(300.dp)
+                            .weight(1f)
+                            .padding(horizontal = 8.dp)
+                            .verticalScroll(rememberScrollState())
+                    ) {
+                        Text(
+                            text = "Описание: ${movie.description}",
+                            style = Typography.bodyLarge,
+                            modifier = Modifier.padding(bottom = 8.dp)
+                        )
+                    }
+                }
+
+                RatingDisplay(movie.rating)
+
                 Text(
-                    text = "Описание: ${movie.description}",
+                    text = "Жанр:",
                     style = Typography.bodyLarge,
-                    modifier = Modifier.padding(bottom = 8.dp)
+                    modifier = Modifier.padding(horizontal = 8.dp)
                 )
-            }
 
-            RatingDisplay(movie.rating)
-
-            Text(
-                text = "Жанр:",
-                style = Typography.bodyLarge,
-                modifier = Modifier.padding(horizontal = 8.dp)
-            )
-
-            LazyColumn {
-                items(movie.genres) { genre ->
+                movie.genres.forEach { genre ->
                     Text(
                         text = genre.name,
                         style = Typography.bodyLarge,
                         modifier = Modifier.padding(horizontal = 14.dp)
                     )
                 }
-            }
 
-            Spacer(modifier = Modifier.height(Spacing.medium))
+                Spacer(modifier = Modifier.height(Spacing.medium))
 
+                Text(
+                    text = "Страны выхода:",
+                    style = Typography.bodyLarge,
+                    modifier = Modifier.padding(horizontal = 8.dp)
+                )
 
-            Text(
-                text = "Страны выхода:",
-                style = Typography.bodyLarge,
-                modifier = Modifier.padding(horizontal = 8.dp)
-            )
-
-            LazyColumn {
-                items(movie.countries) { country ->
+                movie.countries.forEach { country ->
                     Text(
                         text = country.name,
                         style = Typography.bodyLarge,
                         modifier = Modifier.padding(horizontal = 14.dp)
                     )
                 }
-            }
 
-            Spacer(modifier = Modifier.height(Spacing.medium))
+                Spacer(modifier = Modifier.height(Spacing.medium))
 
-            Text(text = "Съемочная команда:", style = Typography.bodyLarge)
-            LazyRow(
-                modifier = Modifier.padding(horizontal = 4.dp)
-            ) {
-                items(movie.persons) { person ->
-                    Row(
-                        modifier = Modifier.padding(horizontal = 4.dp),
-                        verticalAlignment = Alignment.CenterVertically
-                    ) {
-                        AsyncImage(
-                            model = person.photo,
-                            contentDescription = null,
-                            modifier = Modifier
-                                .size(100.dp)
-                        )
-
-                        Spacer(modifier = Modifier.width(Spacing.small))
-                        Column {
-                            Text(text = person.name, style = Typography.bodyLarge)
-                            Text(
-                                text = person.profession,
-                                style = Typography.bodyLarge,
-                                color = Color.Gray
+                Text(text = "Съемочная команда:", style = Typography.bodyLarge)
+                LazyRow(
+                    modifier = Modifier.padding(horizontal = 4.dp)
+                ) {
+                    items(movie.persons) { person ->
+                        Row(
+                            modifier = Modifier.padding(horizontal = 4.dp),
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+                            AsyncImage(
+                                model = person.photo,
+                                contentDescription = null,
+                                modifier = Modifier
+                                    .size(100.dp)
                             )
+
+                            Spacer(modifier = Modifier.width(Spacing.small))
+                            Column {
+                                Text(text = person.name, style = Typography.bodyLarge)
+                                Text(
+                                    text = person.profession,
+                                    style = Typography.bodyLarge,
+                                    color = Color.Gray
+                                )
+                            }
                         }
                     }
                 }
