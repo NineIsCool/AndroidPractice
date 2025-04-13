@@ -8,8 +8,8 @@ import com.example.androidpractice.domain.model.MovieType
 import com.example.androidpractice.domain.model.Poster
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import ru.dekabrsky.consecutivepractice2025.listWithDetails.data.database.MovieDatabase
-import ru.dekabrsky.consecutivepractice2025.listWithDetails.data.entity.MovieDbEntity
+import com.example.androidpractice.data.database.MovieDatabase
+import com.example.androidpractice.data.entity.MovieDbEntity
 
 class MoviesRepository(
     private val api: MovieApi,

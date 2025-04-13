@@ -1,4 +1,4 @@
-package ru.dekabrsky.consecutivepractice2025.listWithDetails.data.entity
+package com.example.androidpractice.data.entity
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

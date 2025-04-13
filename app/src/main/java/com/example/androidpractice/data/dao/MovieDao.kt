@@ -1,9 +1,9 @@
-package ru.dekabrsky.consecutivepractice2025.listWithDetails.data.dao
+package com.example.androidpractice.data.dao
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
-import ru.dekabrsky.consecutivepractice2025.listWithDetails.data.entity.MovieDbEntity
+import com.example.androidpractice.data.entity.MovieDbEntity
 
 @Dao
 interface MovieDao {
