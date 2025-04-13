@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.material.BottomNavigation
 import androidx.compose.material.BottomNavigationItem
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.List
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -56,6 +57,27 @@ fun MainActivityScreen() {
                             navController.navigate("list")
                         }
                     )
+                    BottomNavigationItem(
+                        icon = {
+                            Icon(
+                                Icons.Filled.Favorite,
+                                contentDescription = "Мои фильмы",
+                                tint = Color.White,
+                                modifier = Modifier.size(30.dp)
+                            )
+                        },
+                        label = {
+                            Text(
+                                text = "Мои фильмы",
+                                color = Color.White,
+                                style = Typography.labelSmall
+                            )
+                        },
+                        selected = false,
+                        onClick = {
+                            navController.navigate("favorites")
+                        }
+                    )
                 }
             }
         ) { innerPadding ->
@@ -69,6 +91,7 @@ fun MainActivityScreen() {
                     val movieId = backStackEntry.arguments?.getString("movieId")?.toInt() ?: 0
                     DetailsScreen(navController, movieId)
                 }
+                composable("favorites") { FavoritesScreen(navController)}
             }
         }
     }

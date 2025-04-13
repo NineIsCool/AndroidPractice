@@ -1,6 +1,7 @@
 package com.example.androidpractice.dto
 
 import com.example.androidpractice.domain.model.Poster
+import com.example.androidpractice.dto.MovieFullResponse.GenreDto
 import com.google.gson.annotations.SerializedName
 
 class MoviesSearchResponse(
@@ -13,5 +14,6 @@ class MovieShortResponse(
     val name: String?,
     val year: String?,
     val type: String?,
+    val genres: List<GenreDto>?,
     val poster: Poster?,
 )

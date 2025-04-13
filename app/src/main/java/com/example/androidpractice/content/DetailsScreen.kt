@@ -130,7 +130,7 @@ private fun MovieScreenContent(
 
                 movie.genres.forEach { genre ->
                     Text(
-                        text = genre.name,
+                        text = genre.displayName,
                         style = Typography.bodyLarge,
                         modifier = Modifier.padding(horizontal = 14.dp)
                     )
@@ -146,7 +146,7 @@ private fun MovieScreenContent(
 
                 movie.countries.forEach { country ->
                     Text(
-                        text = country.name,
+                        text = country,
                         style = Typography.bodyLarge,
                         modifier = Modifier.padding(horizontal = 14.dp)
                     )
