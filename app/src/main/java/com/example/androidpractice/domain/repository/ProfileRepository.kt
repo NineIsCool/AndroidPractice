@@ -13,15 +13,26 @@ class ProfileRepository(
     }
 
     override suspend fun setProfile(profile: Profile): Profile {
-        val profileEntity = ProfileDbEntity(
-            fio = profile.fio,
-            avatarUri = profile.avatarUri,
-            resumeUrl = profile.resumeUrl,
-            position = profile.position,
-            email = profile.email
-        )
-        db.profileDao().insert(profileEntity)
-        return profileEntity.toDomain()
+        val existingProfile = db.profileDao().getUser()
+        if (existingProfile == null) {
+            val profileEntity = ProfileDbEntity(
+                fio = profile.fio,
+                avatarUri = profile.avatarUri,
+                resumeUrl = profile.resumeUrl,
+                position = profile.position,
+                email = profile.email
+            )
+            db.profileDao().insert(profileEntity)
+        } else {
+            db.profileDao().update(
+                fio = profile.fio,
+                avatarUri = profile.avatarUri,
+                resumeUrl = profile.resumeUrl,
+                position = profile.position,
+                email = profile.email
+            )
+        }
+        return profile
     }
 
     override suspend fun observeProfile(): Flow<Profile> {
