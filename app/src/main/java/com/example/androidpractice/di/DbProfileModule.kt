@@ -4,17 +4,18 @@ import android.content.Context
 import androidx.room.Room
 import org.koin.dsl.module
 import com.example.androidpractice.data.database.MovieDatabase
+import com.example.androidpractice.data.database.ProfileDatabase
 
-val dbModule = module {
-    single { DatabaseBuilder.getInstance(get()) }
+val dbProfileModule = module {
+    single { DatabaseProfileBuilder.getInstance(get()) }
 }
 
-object DatabaseBuilder {
-    private var INSTANCE: MovieDatabase? = null
+object DatabaseProfileBuilder {
+    private var INSTANCE: ProfileDatabase? = null
 
-    fun getInstance(context: Context): MovieDatabase {
+    fun getInstance(context: Context): ProfileDatabase {
         if (INSTANCE == null) {
-            synchronized(MovieDatabase::class) {
+            synchronized(ProfileDatabase::class) {
                 INSTANCE = buildRoomDB(context)
             }
         }
@@ -24,7 +25,7 @@ object DatabaseBuilder {
     private fun buildRoomDB(context: Context) =
         Room.databaseBuilder(
             context.applicationContext,
-            MovieDatabase::class.java,
-            "movies"
+            ProfileDatabase::class.java,
+            "profiles"
         ).build()
 }
