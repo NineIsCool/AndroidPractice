@@ -97,7 +97,7 @@ fun ProfileScreen(navigation: NavHostController) {
                 if (state.resumeUrl.isNotEmpty()) {
                     Spacer(modifier = Modifier.height(16.dp))
                     Button(
-                        onClick = { /* TODO: Open resume URL */ }
+                        onClick = { viewModel.onDocumentClick() }
                     ) {
                         Text("Просмотреть резюме")
                     }
