@@ -10,6 +10,7 @@ import androidx.compose.material.BottomNavigationItem
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.List
+import androidx.compose.material.icons.filled.Person
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
@@ -61,14 +62,14 @@ fun MainActivityScreen() {
                         icon = {
                             Icon(
                                 Icons.Filled.Favorite,
-                                contentDescription = "Мои фильмы",
+                                contentDescription = "Любимое",
                                 tint = Color.White,
                                 modifier = Modifier.size(30.dp)
                             )
                         },
                         label = {
                             Text(
-                                text = "Мои фильмы",
+                                text = "Любимое",
                                 color = Color.White,
                                 style = Typography.labelSmall
                             )
@@ -76,6 +77,27 @@ fun MainActivityScreen() {
                         selected = false,
                         onClick = {
                             navController.navigate("favorites")
+                        }
+                    )
+                    BottomNavigationItem(
+                        icon = {
+                            Icon(
+                                Icons.Filled.Person,
+                                contentDescription = "Профиль",
+                                tint = Color.White,
+                                modifier = Modifier.size(30.dp)
+                            )
+                        },
+                        label = {
+                            Text(
+                                text = "Профиль",
+                                color = Color.White,
+                                style = Typography.labelSmall
+                            )
+                        },
+                        selected = false,
+                        onClick = {
+                            navController.navigate("profile")
                         }
                     )
                 }
@@ -92,6 +114,8 @@ fun MainActivityScreen() {
                     DetailsScreen(navController, movieId)
                 }
                 composable("favorites") { FavoritesScreen(navController)}
+                composable("profile") { ProfileScreen(navController)}
+                composable("edit_profile") { EditProfileScreen(navController)}
             }
         }
     }
