@@ -5,6 +5,7 @@ import com.example.androidpractice.di.dbMovieModule
 import com.example.androidpractice.di.dbProfileModule
 import com.example.androidpractice.di.restModule
 import com.example.androidpractice.di.rootModule
+import com.example.androidpractice.utils.NotificationUtils
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
@@ -13,6 +14,8 @@ class App : Application() {
 
     override fun onCreate() {
         super.onCreate()
+
+        NotificationUtils.createNotificationChannel(this)
 
         startKoin {
             androidLogger()
